@@ -23,7 +23,9 @@ namespace HumaneSociety
 	
 	
 
+
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="HumaneSociety")]
+
 
 	public partial class HumaneSocietyDataContext : System.Data.Linq.DataContext
 	{
@@ -68,7 +70,7 @@ namespace HumaneSociety
 
         #endregion
         public HumaneSocietyDataContext() :
-                base(global::HumaneSociety.Properties.Settings.Default.HumaneSocietyConnectionString4, mappingSource)
+               base(global::HumaneSociety.Properties.Settings.Default.HumaneSocietyConnectionString4, mappingSource)
         {
             OnCreated();
         }

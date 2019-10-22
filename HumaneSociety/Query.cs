@@ -190,10 +190,14 @@ namespace HumaneSociety
                     Console.WriteLine("Username: " + employeeRead.UserName);
                     break;
                 case "delete":
-
+                    var employeeDelete =
+                        db.Employees.FirstOrDefault(e => e.EmployeeNumber == employee.EmployeeNumber);
+                    db.Employees.DeleteOnSubmit(employeeDelete);
+                    db.SubmitChanges();
                     break;
                 case "create":
-
+                    db.Employees.InsertOnSubmit(employee);
+                    db.SubmitChanges();
                     break;
                 default:
                     UserInterface.DisplayUserOptions("Input not recognized please try agian");
