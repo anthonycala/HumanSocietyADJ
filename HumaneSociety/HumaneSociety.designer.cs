@@ -23,6 +23,7 @@ namespace HumaneSociety
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="HumaneSociety")]
+
 	public partial class HumaneSocietyDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -63,15 +64,13 @@ namespace HumaneSociety
     partial void InsertUSState(USState instance);
     partial void UpdateUSState(USState instance);
     partial void DeleteUSState(USState instance);
-    #endregion
-		
-		public HumaneSocietyDataContext() : 
-				base(global::HumaneSociety.Properties.Settings.Default.HumaneSocietyConnectionString4, mappingSource)
-		{
-			OnCreated();
-		}
-		
-		public HumaneSocietyDataContext(string connection) : 
+        #endregion
+        public HumaneSocietyDataContext() :
+                base(global::HumaneSociety.Properties.Settings.Default.HumaneSocietyConnectionString4, mappingSource)
+        {
+            OnCreated();
+        }
+        public HumaneSocietyDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
