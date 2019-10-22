@@ -82,27 +82,14 @@ namespace HumaneSociety.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-<<<<<<< HEAD
+
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A6UM96T\\SQLEXPRESS;Initial Catalog=HumaneSociety;Integrated S" +
             "ecurity=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False")]
         public string HumaneSocietyConnectionString4 {
             get {
                 return ((string)(this["HumaneSocietyConnectionString4"]));
-=======
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WASHINGTON\\SQLEXPRESS;Initial Catalog=HumaneSociety;Integrated Securi" +
-            "ty=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False")]
-        public string HumaneSocietyConnectionString4 {
-            get {
-                return ((string)(this["HumaneSocietyConnectionString4"]));
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ANTHONYCALA2F5F\\SQLEXPRESS;Initial Catalog=HumanSociety;Integrated Se" +
-            "curity=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False")]
-        public string HumanSocietyConnectionString {
-            get {
-                return ((string)(this["HumanSocietyConnectionString"]));
->>>>>>> d9d00a8d7bcae219a17c4e19035c5404176a22da
->>>>>>> afe4163a6d73e080bda7477684b1c7ae9ce44339
+
+
             }
         }
     }

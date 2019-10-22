@@ -199,10 +199,10 @@ namespace HumaneSociety
 
         internal static Animal GetAnimalByID(int id)
         {
-            //var animalById = id.Where(i => i.id);
+            
             Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             Console.WriteLine(animal.Name);
-            throw new NotImplementedException();
+            return animal;
 
         }
 
@@ -219,23 +219,79 @@ namespace HumaneSociety
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
+            //get value from key
+            IQueryable<Animal> animals = db.Animals;
+            foreach (int key in updates.Keys)
+            {
+                switch (key)
+                {
+                    case 1:
+                        animals = animals.Where(a => a.Category.Name == updates[1]);
+                        break;
+                    case 2:
+                        animals = animals.Where(a => a.Name == updates[2]);
+                        break;
+                    case 3:
+                        animals = animals.Where(a => a.Age.ToString() == updates[3]);
+                        break;
+                    case 4:
+                        animals = animals.Where(a => a.Demeanor == updates[4]);
+                        break;
+                    case 5:
+                        animals = animals.Where(a => a.KidFriendly.ToString() == updates[5]);
+                        break;
+                    case 6:
+                        animals = animals.Where(a => a.PetFriendly.ToString() == updates[6]);
+                        break;
+                    case 7:
+                        animals = animals.Where(a => a.Weight.ToString() == updates[7]);
+                        break;
+                    case 8:
+                        animals = animals.Where(a => a.AnimalId.ToString() == updates[8]);
+                        break;
+                    default:
+                        UserInterface.DisplayUserOptions("Input not recognized please try agian");
+                        break;
+
+
+                }
+            }
+
+            //Animal animal = db.Animals.Where(a => a.Category.Name == updates[1]).SingleOrDefault();            
+            //Animal animal = db.Animals.Where(a => a.Name == updates[2]).SingleOrDefault();
+            //Animal animal = db.Animals.Where(a => a.Age.ToString() == updates[3]).SingleOrDefault();
+            //Animal animal = db.Animals.Where(a => a.Demeanor == updates[4]).SingleOrDefault();
+            //Animal animal = db.Animals.Where(a => a.KidFriendly.ToString() == updates[5]).SingleOrDefault();
+            //Animal animal = db.Animals.Where(a => a.PetFriendly.ToString() == updates[6]).SingleOrDefault();
+            //Animal animal = db.Animals.Where(a => a.Weight.ToString() == updates[7]).SingleOrDefault();
+            //Animal animal = db.Animals.Where(a => a.AnimalId.ToString() == updates[8]).SingleOrDefault();
+
+
             throw new NotImplementedException();
         }
          
-        // TODO: Misc Animal Things
+        
         internal static int GetCategoryId(string categoryName)
         {
-            throw new NotImplementedException();
+            Category category = db.Categories.Where(c => c.Name == categoryName).FirstOrDefault();
+            Console.WriteLine(category.Name);
+            Console.WriteLine(category.CategoryId);
+            return category.CategoryId;
         }
         
         internal static Room GetRoom(int animalId)
         {
-            throw new NotImplementedException();
+            Room room = db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
+            Console.WriteLine(room.RoomNumber);
+            Console.WriteLine(room.RoomId);
+            return room;
         }
         
         internal static int GetDietPlanId(string dietPlanName)
         {
-            throw new NotImplementedException();
+            DietPlan dietPlan = db.DietPlans.FirstOrDefault(d => d.Name == dietPlanName);
+            Console.WriteLine(dietPlan.DietPlanId);
+            return dietPlan.DietPlanId;
         }
 
         // TODO: Adoption CRUD Operations
