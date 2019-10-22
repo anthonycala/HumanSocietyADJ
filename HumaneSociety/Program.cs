@@ -10,7 +10,12 @@ namespace HumaneSociety
     {
         static void Main(string[] args)
         {
-            PointOfEntry.Run();
+            // PointOfEntry.Run();
+            Employee employee = new Employee();
+            employee.EmployeeNumber = int.Parse(UserInterface.GetStringData("employee number", "the employee's"));
+            Query.RunEmployeeQueries(employee, "read");
+
+            Console.ReadLine();
         }
     }
 }

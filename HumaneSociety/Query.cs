@@ -166,7 +166,28 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
+            switch (crudOperation)
+            {
+                case "update":
+
+                    break;
+                case "read":
+                    var employ =
+                        (from e in db.Employees
+                         where e.EmployeeId == employee.EmployeeNumber
+                         select e).First();
+                    Console.WriteLine(employ.FirstName);
+                    break;
+                case "delete":
+
+                    break;
+                case "create":
+
+                    break;
+                default:
+                    UserInterface.DisplayUserOptions("Input not recognized please try agian");
+                    break;
+            }
         }
 
         // TODO: Animal CRUD Operations

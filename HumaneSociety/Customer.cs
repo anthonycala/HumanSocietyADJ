@@ -11,7 +11,7 @@ namespace HumaneSociety
         Client client;
         public override void LogIn()
         {
-            if (CheckIfNewUser())
+            if (CheckIfNewUser())               
             {
                 CreateClient();
                 LogInPreExistingUser();

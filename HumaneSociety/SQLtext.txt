@@ -1,0 +1,44 @@
+﻿Initial table inserts SQL:
+These inserts are run all at once. They are in a certain order so that there are no conflicts with foreign keys.
+Some rooms start with NULL animal IDs since there are five animals and ten rooms.
+
+INSERT INTO Categories VALUES ('MAMMAL')
+INSERT INTO Categories VALUES ('BIRD')
+INSERT INTO Categories VALUES ('FISH')
+INSERT INTO Categories VALUES ('REPTILE')
+INSERT INTO Categories VALUES ('INSECT')
+
+INSERT INTO DietPlans VALUES ('MAMMAL FEED', 'MAMMAL FOOD', 10)
+INSERT INTO DietPlans VALUES ('BIRD FEED', 'BIRD FOOD', 2)
+INSERT INTO DietPlans VALUES ('FISH FEED', 'FISH FOOD', 1)
+INSERT INTO DietPlans VALUES ('REPTILE FEED', 'REPTILE FOOD', 2)
+INSERT INTO DietPlans VALUES ('INSECT FEED', 'INSECT FOOD', 1)
+
+INSERT INTO Employees VALUES ('Andrew', 'Albertson', 'AndrewAlbertson', 'Qaz123', '1', 'AndrewAlbertson@gmail.com')
+INSERT INTO Employees VALUES ('Billy', 'Bob', 'BillyBob', 'Wsx123', '2', 'BillyBob@gmail.com')
+INSERT INTO Employees VALUES ('Caleb', 'Crowly', 'CalebCrowly', 'Edc123', '3', 'CalebCrowly@gmail.com')
+INSERT INTO Employees VALUES ('David', 'Danner', 'DavidDanner', 'Rfv123', '4', 'DavidDanner@gmail.com')
+INSERT INTO Employees VALUES ('Eric', 'Ellway', 'EricEllway', 'Tgb123', '5', 'EricEllway@gmail.com')
+
+INSERT INTO Animals VALUES ('EGG', 40, 4, 'CHILL', 1, 1, 'FEMALE', 'NOT ADOPTED', 1, 1, 1)
+INSERT INTO Animals VALUES ('STEVE', 2, 35, 'FLAPPY', 1, 0, 'MALE', 'NOT ADOPTED', 2, 2, 2)
+INSERT INTO Animals VALUES ('KRAKEN', 5, 2, 'LAZY', 1, 1, 'MALE', 'NOT ADOPTED', 3, 3, 3)
+INSERT INTO Animals VALUES ('NORBERT', 7, 3, 'SLIMY', 0, 0, 'MALE', 'NOT ADOPTED', 4, 4, 4)
+INSERT INTO Animals VALUES ('BUZZ', 1, 1, 'ORNERY', 1, 1, 'FEMALE', 'NOT ADOPTED', 5, 5, 5)
+
+INSERT INTO Rooms VALUES (11, 1)
+INSERT INTO Rooms VALUES (12, 2)
+INSERT INTO Rooms VALUES (13, 3)
+INSERT INTO Rooms VALUES (14, 4)
+INSERT INTO Rooms VALUES (15, 5)
+INSERT INTO Rooms VALUES (21, NULL)
+INSERT INTO Rooms VALUES (22, NULL)
+INSERT INTO Rooms VALUES (23, NULL)
+INSERT INTO Rooms VALUES (24, NULL)
+INSERT INTO Rooms VALUES (25, NULL)
+
+INSERT INTO Clients Values ('Albert', 'Einstien', 'AlbertEinstien', '123qaz', NULL, 'AlbertEinstien@gmail.com')
+INSERT INTO Clients Values ('Bob', 'Marley', 'BobMarley', '123wsx', NULL, 'BobMarley@gmail.com')
+INSERT INTO Clients Values ('Chris', 'Rock', 'ChrisRock', '123edc', NULL, 'BobMarley@gmail.com')
+INSERT INTO Clients Values ('Dick', 'Chaney', 'DickChaney', '123rfv', NULL, 'DickChaney@gmail.com')
+INSERT INTO Clients Values ('Edward', 'Nortan', 'EdwardNortan', '123tgb', NULL, 'EdwardNortan@gmail.com')
