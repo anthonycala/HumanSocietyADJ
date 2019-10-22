@@ -169,14 +169,25 @@ namespace HumaneSociety
             switch (crudOperation)
             {
                 case "update":
-
+                    var employeeUpdate =
+                        (from e in db.Employees
+                         where e.EmployeeNumber == employee.EmployeeNumber
+                         select e).First();
+                    employeeUpdate.FirstName = employee.FirstName;
+                    employeeUpdate.LastName = employee.LastName;
+                    employeeUpdate.Email = employee.Email;
+                    db.SubmitChanges();
                     break;
                 case "read":
-                    var employ =
+                    var employeeRead =
                         (from e in db.Employees
-                         where e.EmployeeId == employee.EmployeeNumber
+                         where e.EmployeeNumber == employee.EmployeeNumber
                          select e).First();
-                    Console.WriteLine(employ.FirstName);
+                    Console.WriteLine("First Name: " + employeeRead.FirstName);
+                    Console.WriteLine("Last Name: " + employeeRead.LastName);
+                    Console.WriteLine("Email: " + employeeRead.Email);
+                    Console.WriteLine("ID number: " + employeeRead.EmployeeNumber);
+                    Console.WriteLine("Username: " + employeeRead.UserName);
                     break;
                 case "delete":
 
