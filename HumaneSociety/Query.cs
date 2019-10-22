@@ -199,11 +199,11 @@ namespace HumaneSociety
 
         internal static Animal GetAnimalByID(int id)
         {
+
             
             Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             Console.WriteLine(animal.Name);
             return animal;
-
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
