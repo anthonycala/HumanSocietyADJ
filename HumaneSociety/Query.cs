@@ -213,15 +213,13 @@ namespace HumaneSociety
 
         internal static Animal GetAnimalByID(int id)
         {
-<<<<<<< HEAD
+
             
             Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             Console.WriteLine(animal.Name);
             return animal;
 
-=======
-            throw new NotImplementedException();
->>>>>>> 8ad4fa14c9d1e5622cc1601746580e5611a5c0da
+
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
