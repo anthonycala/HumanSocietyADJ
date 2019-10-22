@@ -169,20 +169,35 @@ namespace HumaneSociety
             switch (crudOperation)
             {
                 case "update":
-
+                    var employeeUpdate =
+                        (from e in db.Employees
+                         where e.EmployeeNumber == employee.EmployeeNumber
+                         select e).First();
+                    employeeUpdate.FirstName = employee.FirstName;
+                    employeeUpdate.LastName = employee.LastName;
+                    employeeUpdate.Email = employee.Email;
+                    db.SubmitChanges();
                     break;
                 case "read":
-                    var employ =
+                    var employeeRead =
                         (from e in db.Employees
-                         where e.EmployeeId == employee.EmployeeNumber
+                         where e.EmployeeNumber == employee.EmployeeNumber
                          select e).First();
-                    Console.WriteLine(employ.FirstName);
+                    Console.WriteLine("First Name: " + employeeRead.FirstName);
+                    Console.WriteLine("Last Name: " + employeeRead.LastName);
+                    Console.WriteLine("Email: " + employeeRead.Email);
+                    Console.WriteLine("ID number: " + employeeRead.EmployeeNumber);
+                    Console.WriteLine("Username: " + employeeRead.UserName);
                     break;
                 case "delete":
-
+                    var employeeDelete =
+                        db.Employees.FirstOrDefault(e => e.EmployeeNumber == employee.EmployeeNumber);
+                    db.Employees.DeleteOnSubmit(employeeDelete);
+                    db.SubmitChanges();
                     break;
                 case "create":
-
+                    db.Employees.InsertOnSubmit(employee);
+                    db.SubmitChanges();
                     break;
                 default:
                     UserInterface.DisplayUserOptions("Input not recognized please try agian");
@@ -193,17 +208,20 @@ namespace HumaneSociety
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
-
             throw new NotImplementedException();
         }
 
         internal static Animal GetAnimalByID(int id)
         {
+<<<<<<< HEAD
             
             Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             Console.WriteLine(animal.Name);
             return animal;
 
+=======
+            throw new NotImplementedException();
+>>>>>>> 8ad4fa14c9d1e5622cc1601746580e5611a5c0da
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
