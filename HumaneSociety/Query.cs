@@ -169,35 +169,20 @@ namespace HumaneSociety
             switch (crudOperation)
             {
                 case "update":
-                    var employeeUpdate =
-                        (from e in db.Employees
-                         where e.EmployeeNumber == employee.EmployeeNumber
-                         select e).First();
-                    employeeUpdate.FirstName = employee.FirstName;
-                    employeeUpdate.LastName = employee.LastName;
-                    employeeUpdate.Email = employee.Email;
-                    db.SubmitChanges();
+
                     break;
                 case "read":
-                    var employeeRead =
+                    var employ =
                         (from e in db.Employees
-                         where e.EmployeeNumber == employee.EmployeeNumber
+                         where e.EmployeeId == employee.EmployeeNumber
                          select e).First();
-                    Console.WriteLine("First Name: " + employeeRead.FirstName);
-                    Console.WriteLine("Last Name: " + employeeRead.LastName);
-                    Console.WriteLine("Email: " + employeeRead.Email);
-                    Console.WriteLine("ID number: " + employeeRead.EmployeeNumber);
-                    Console.WriteLine("Username: " + employeeRead.UserName);
+                    Console.WriteLine(employ.FirstName);
                     break;
                 case "delete":
-                    var employeeDelete =
-                        db.Employees.FirstOrDefault(e => e.EmployeeNumber == employee.EmployeeNumber);
-                    db.Employees.DeleteOnSubmit(employeeDelete);
-                    db.SubmitChanges();
+                    
                     break;
                 case "create":
-                    db.Employees.InsertOnSubmit(employee);
-                    db.SubmitChanges();
+
                     break;
                 default:
                     UserInterface.DisplayUserOptions("Input not recognized please try agian");
@@ -208,20 +193,17 @@ namespace HumaneSociety
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
+
             throw new NotImplementedException();
         }
 
         internal static Animal GetAnimalByID(int id)
         {
-<<<<<<< HEAD
             
             Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             Console.WriteLine(animal.Name);
             return animal;
 
-=======
-            throw new NotImplementedException();
->>>>>>> 8ad4fa14c9d1e5622cc1601746580e5611a5c0da
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
@@ -237,7 +219,7 @@ namespace HumaneSociety
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
-            //get value from key
+            //get value from key 
             IQueryable<Animal> animals = db.Animals;
             foreach (int key in updates.Keys)
             {
