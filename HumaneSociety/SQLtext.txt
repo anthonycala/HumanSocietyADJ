@@ -20,12 +20,11 @@ INSERT INTO Employees VALUES ('Caleb', 'Crowly', 'CalebCrowly', 'Edc123', '3', '
 INSERT INTO Employees VALUES ('David', 'Danner', 'DavidDanner', 'Rfv123', '4', 'DavidDanner@gmail.com')
 INSERT INTO Employees VALUES ('Eric', 'Ellway', 'EricEllway', 'Tgb123', '5', 'EricEllway@gmail.com')
 
-INSERT INTO Animals VALUES ('EGG', 40, 4, 'CHILL', 1, 1, 'FEMALE', 'NOT ADOPTED', 1, 1, 1)
-INSERT INTO Animals VALUES ('STEVE', 2, 35, 'FLAPPY', 1, 0, 'MALE', 'NOT ADOPTED', 2, 2, 2)
-INSERT INTO Animals VALUES ('KRAKEN', 5, 2, 'LAZY', 1, 1, 'MALE', 'NOT ADOPTED', 3, 3, 3)
-INSERT INTO Animals VALUES ('NORBERT', 7, 3, 'SLIMY', 0, 0, 'MALE', 'NOT ADOPTED', 4, 4, 4)
-INSERT INTO Animals VALUES ('BUZZ', 1, 1, 'ORNERY', 1, 1, 'FEMALE', 'NOT ADOPTED', 5, 5, 5)
-
+NSERT INTO Animals VALUES ('EGG', 40, 4, 'CHILL', 1, 1, 'FEMALE', 'NOT ADOPTED', (SELECT CategoryId FROM Categories WHERE Name ='MAMMAL'), (SELECT DietPlanId FROM DietPlans WHERE Name ='MAMMAL FEED'), (SELECT EmployeeId FROM Employees WHERE FirstName ='Andrew'))
+INSERT INTO Animals VALUES ('STEVE', 2, 35, 'FLAPPY', 1, 0, 'MALE', 'NOT ADOPTED', (SELECT CategoryId FROM Categories WHERE Name ='BIRD'), (SELECT DietPlanId FROM DietPlans WHERE Name ='BIRD FEED'), (SELECT EmployeeId FROM Employees WHERE FirstName ='Billy'))
+INSERT INTO Animals VALUES ('KRAKEN', 5, 2, 'LAZY', 1, 1, 'MALE', 'NOT ADOPTED', (SELECT CategoryId FROM Categories WHERE Name ='FISH'), (SELECT DietPlanId FROM DietPlans WHERE Name ='FISH FEED'), (SELECT EmployeeId FROM Employees WHERE FirstName ='Caleb'))
+INSERT INTO Animals VALUES ('NORBERT', 7, 3, 'SLIMY', 0, 0, 'MALE', 'NOT ADOPTED', (SELECT CategoryId FROM Categories WHERE Name ='REPTILE'), (SELECT DietPlanId FROM DietPlans WHERE Name ='REPTILE FEED'), (SELECT EmployeeId FROM Employees WHERE FirstName ='David'))
+INSERT INTO Animals VALUES ('BUZZ', 1, 1, 'ORNERY', 1, 1, 'FEMALE', 'NOT ADOPTED', (SELECT CategoryId FROM Categories WHERE Name ='INSECT'), (SELECT DietPlanId FROM DietPlans WHERE Name ='INSECT FEED'), (SELECT EmployeeId FROM Employees WHERE FirstName ='Eric'))
 INSERT INTO Rooms VALUES (11, 1)
 INSERT INTO Rooms VALUES (12, 2)
 INSERT INTO Rooms VALUES (13, 3)
