@@ -19,7 +19,7 @@ namespace HumaneSociety
           
 
 
-            PointOfEntry.Run();
+            //PointOfEntry.Run();
             
 
 
