@@ -80,7 +80,7 @@ namespace HumaneSociety
             {
                 clientFromDb = db.Clients.Where(c => c.ClientId == clientWithUpdates.ClientId).Single();
             }
-            catch(InvalidOperationException e)
+            catch(InvalidOperationException)
             {
                 Console.WriteLine("No clients have a ClientId that matches the Client passed in.");
                 Console.WriteLine("No update have been made.");
@@ -446,18 +446,22 @@ namespace HumaneSociety
         internal static void UpdateShot(string shotName, Animal animal)
         {
             AnimalShot animalShot = new AnimalShot();
-            Shot shot = new Shot();
-
+            var shotInDb = db.Shots.Where(s => s.Name == shotName).FirstOrDefault();
+            if (shotInDb == null)
+            {
+                Console.WriteLine("That shot does not exist");
+                Shot shot = new Shot() { Name = shotName };
+                db.Shots.InsertOnSubmit(shot);
+                db.SubmitChanges();
+                shotInDb = db.Shots.Where(s => s.Name == shotName).FirstOrDefault();
+            }
+           
             animalShot.AnimalId = animal.AnimalId;
             animalShot.DateReceived = DateTime.Now;
-            animalShot.ShotId = shot.ShotId;
-
-            shot.Name = shotName;
-            
-
+            animalShot.ShotId = db.Shots.Where(s => s.Name == shotName).Select(s => s.ShotId).FirstOrDefault();
             db.AnimalShots.InsertOnSubmit(animalShot);
-            db.Shots.InsertOnSubmit(shot);
             db.SubmitChanges();
+
         }
     }
 }

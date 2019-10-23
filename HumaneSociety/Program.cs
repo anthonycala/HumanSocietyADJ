@@ -14,17 +14,17 @@ namespace HumaneSociety
 
 
             //Dictionary<int, string> updates = null;
-            Animal animal = Query.GetAnimalByID(1);
+            //Animal animal = Query.GetAnimalByID(1);
 
-            UserEmployee userEmployee = new UserEmployee();
-            userEmployee.CheckShots(animal);
+            //UserEmployee userEmployee = new UserEmployee();
+            //userEmployee.CheckShots(animal);
             
             //Query.SearchForAnimalsByMultipleTraits(updates);
             //Query.GetAnimalByID(1);
           
 
 
-            //PointOfEntry.Run();
+            PointOfEntry.Run();
             
 
 
