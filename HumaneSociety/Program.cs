@@ -12,11 +12,18 @@ namespace HumaneSociety
         {
 
 
+
+            Dictionary<int, string> updates = UserInterface.GetAnimalSearchCriteria();
+            Query.SearchForAnimalsByMultipleTraits(updates);
+
+          
+
+
             PointOfEntry.Run();
             
 
 
-            
+
 
 
 
