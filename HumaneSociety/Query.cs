@@ -434,7 +434,7 @@ namespace HumaneSociety
         // TODO: Shots Stuff
         internal static IQueryable<AnimalShot> GetShots(Animal animal)
         {
-            IQueryable<AnimalShot> animalShots = db.AnimalShots;
+            
             
 
 
@@ -442,7 +442,19 @@ namespace HumaneSociety
 
         internal static void UpdateShot(string shotName, Animal animal)
         {
-            throw new NotImplementedException();
+            AnimalShot animalShot = new AnimalShot();
+            Shot shot = new Shot();
+
+            animalShot.AnimalId = animal.AnimalId;
+            animalShot.DateReceived = DateTime.Now;
+            animalShot.ShotId = shot.ShotId;
+
+            shot.Name = shotName;
+            
+
+            db.AnimalShots.InsertOnSubmit(animalShot);
+            db.Shots.InsertOnSubmit(shot);
+            db.SubmitChanges();
         }
     }
 }
