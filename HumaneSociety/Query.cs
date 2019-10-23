@@ -208,129 +208,34 @@ namespace HumaneSociety
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
-
-
             db.Animals.InsertOnSubmit(animal);
             db.SubmitChanges();
-
-
         }
 
         internal static Animal GetAnimalByID(int id)
-        {            
+        {
             Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             Console.WriteLine(animal.Name);
-            Console.WriteLine(animal.DietPlan.Name);
             return animal;
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
             Animal animal = db.Animals.Where(a => a.AnimalId == animalId).FirstOrDefault();
-            foreach (int key in updates.Keys)
-            {
-
-                switch (key)
-                {
-                    case 1:
-                        if (updates[1] == null)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            animal.Category.Name = updates[1];
-                        }
-                        break;
-                    case 2:
-                        if (updates[2] == null)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            animal.Name = updates[2];
-                        }
-                        break;
-                    case 3:
-                        if (updates[3] == null)
-                        {
-                            break;
-                        }
-                        else
-                        { 
-                            animal.Age = Convert.ToInt32(updates[3]);
-                        }
-                        break;
-                    case 4:
-                        if (updates[4] == null)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            animal.Demeanor = updates[4];
-                        }
-                        break;
-                    case 5:
-                        if (updates[5] == null)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            if (updates[5] == "true")
-                            {
-                                animal.KidFriendly = true;
-                            }
-                            else
-                            {
-                                animal.KidFriendly = false;
-                            }
-                                
-                        }
-                        break;
-                    case 6:
-                        if (updates[6] == null)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            if (updates[6] == "true")
-                            {
-                                animal.PetFriendly = true;
-                            }
-                            else
-                            {
-                                animal.PetFriendly = false;
-                            }
-                        }
-                        break;
-                    case 7:
-                        if (updates[7] == null)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            animal.Weight = Convert.ToInt32(updates[7]);
-                        }
-                        break;
-                }
-
-                
-            }
-            db.SubmitChanges();
+            
         }
 
         internal static void RemoveAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            Animal deleteAnimal = db.Animals.Where(a => a.AnimalId == animal.AnimalId).FirstOrDefault();
+            db.Animals.DeleteOnSubmit(deleteAnimal);
+            db.SubmitChanges();
         }
         
-        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates)
+        // TODO: Animal Multi-Trait Search
+        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
+            //get value from key
             IQueryable<Animal> animals = db.Animals;
             foreach (int key in updates.Keys)
             {
@@ -367,6 +272,7 @@ namespace HumaneSociety
 
                 }
             }
+
             return animals;
         }
          
