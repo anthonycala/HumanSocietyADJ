@@ -397,30 +397,47 @@ namespace HumaneSociety
         }
 
         // TODO: Adoption CRUD Operations
-        internal static void Adopt(Animal animal, Client client)
+        internal static void Adopt(Animal animal, Client client)    
         {
-            throw new NotImplementedException();
+            Adoption adoption = new Adoption();
+            adoption.ClientId = client.ClientId;
+            adoption.AnimalId = animal.AnimalId;
+            adoption.ApprovalStatus = "NOT APPROVED";
+            adoption.AdoptionFee = 75;
+            adoption.PaymentCollected = false;
+
+            db.Adoptions.InsertOnSubmit(adoption);
+            db.SubmitChanges();
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
         {
-            throw new NotImplementedException();
+            IQueryable<Adoption> adoptions = db.Adoptions;
+            var getAdoptions = adoptions.Where(a => a.ApprovalStatus == "NOT APPROVED");
+            return getAdoptions;
         }
 
         internal static void UpdateAdoption(bool isAdopted, Adoption adoption)
         {
-            throw new NotImplementedException();
+            Adoption updateAdoption = db.Adoptions.Where(a => a.ClientId == adoption.ClientId).FirstOrDefault();
+            updateAdoption.ApprovalStatus = isAdopted == true ? updateAdoption.ApprovalStatus = "APPROVED" : updateAdoption.ApprovalStatus = "NOT APPROVED";
+            db.SubmitChanges();
         }
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
-            throw new NotImplementedException();
+            Adoption deleteAdoption = db.Adoptions.Where(a => a.ClientId == clientId && a.AnimalId == animalId).FirstOrDefault();
+            db.Adoptions.DeleteOnSubmit(deleteAdoption);
+            db.SubmitChanges();
         }
 
         // TODO: Shots Stuff
         internal static IQueryable<AnimalShot> GetShots(Animal animal)
         {
-            throw new NotImplementedException();
+            IQueryable<AnimalShot> animalShots = db.AnimalShots;
+            
+
+
         }
 
         internal static void UpdateShot(string shotName, Animal animal)
