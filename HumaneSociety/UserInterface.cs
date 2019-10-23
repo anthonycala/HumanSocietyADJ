@@ -212,7 +212,7 @@ namespace HumaneSociety
                     searchParameters.Add(7, GetIntegerData("weight", "the animal's").ToString());
                     break;
                 case "8":
-                    searchParameters.Add(8, GetIntegerData("ID", "the animal's").ToString());
+                    
                     break;
                 default:
                     DisplayUserOptions("Input not recognized please try agian");

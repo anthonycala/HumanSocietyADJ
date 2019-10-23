@@ -13,9 +13,13 @@ namespace HumaneSociety
 
 
 
-            Dictionary<int, string> updates = UserInterface.GetAnimalSearchCriteria();
-            Query.SearchForAnimalsByMultipleTraits(updates);
+            Dictionary<int, string> updates = null;
+            Animal animal = Query.GetAnimalByID(1);
 
+            UserEmployee userEmployee = new UserEmployee();
+            userEmployee.UpdateAnimal(animal, updates);
+            //Query.SearchForAnimalsByMultipleTraits(updates);
+            //Query.GetAnimalByID(1);
           
 
 
