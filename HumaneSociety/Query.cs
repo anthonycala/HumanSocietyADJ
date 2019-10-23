@@ -80,7 +80,7 @@ namespace HumaneSociety
             {
                 clientFromDb = db.Clients.Where(c => c.ClientId == clientWithUpdates.ClientId).Single();
             }
-            catch(InvalidOperationException e)
+            catch(InvalidOperationException)
             {
                 Console.WriteLine("No clients have a ClientId that matches the Client passed in.");
                 Console.WriteLine("No update have been made.");
@@ -161,18 +161,26 @@ namespace HumaneSociety
         }
 
 
-        //// TODO Items: ////
         
-        // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
             switch (crudOperation)
             {
                 case "update":
-                    var employeeUpdate =
-                        (from e in db.Employees
-                         where e.EmployeeNumber == employee.EmployeeNumber
-                         select e).First();
+                    Employee employeeUpdate = null;
+                    try
+                    {
+                        employeeUpdate =
+                            (from e in db.Employees
+                             where e.EmployeeNumber == employee.EmployeeNumber
+                             select e).Single();
+                    }
+                    catch(InvalidOperationException)
+                    {
+                        Console.WriteLine("No employees have a EmployeeId that matches the Employee passed in.");
+                        Console.WriteLine("No update have been made.");
+                        return;
+                    }
                     employeeUpdate.FirstName = employee.FirstName;
                     employeeUpdate.LastName = employee.LastName;
                     employeeUpdate.Email = employee.Email;
@@ -183,12 +191,19 @@ namespace HumaneSociety
                         (from e in db.Employees
                          where e.EmployeeNumber == employee.EmployeeNumber
                          select e).First();
-                    Console.WriteLine("First Name: " + employeeRead.FirstName);
-                    Console.WriteLine("Last Name: " + employeeRead.LastName);
-                    Console.WriteLine("Email: " + employeeRead.Email);
-                    Console.WriteLine("ID number: " + employeeRead.EmployeeNumber);
-                    Console.WriteLine("Username: " + employeeRead.UserName);
-                    break;
+                    if (employeeRead == null)
+                    {
+                        throw new NullReferenceException();
+                    }
+                    else
+                    {
+                        Console.WriteLine("First Name: " + employeeRead.FirstName);
+                        Console.WriteLine("Last Name: " + employeeRead.LastName);
+                        Console.WriteLine("Email: " + employeeRead.Email);
+                        Console.WriteLine("ID number: " + employeeRead.EmployeeNumber);
+                        Console.WriteLine("Username: " + employeeRead.UserName);
+                        break;
+                    }
                 case "delete":
                     var employeeDelete =
                         db.Employees.FirstOrDefault(e => e.EmployeeNumber == employee.EmployeeNumber);
@@ -396,7 +411,6 @@ namespace HumaneSociety
             return dietPlan.DietPlanId;
         }
 
-        // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)    
         {
             Adoption adoption = new Adoption();
