@@ -230,7 +230,7 @@ namespace HumaneSociety
         internal static Animal GetAnimalByID(int id)
         {
             Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
-            Console.WriteLine(animal.Name);
+            
             return animal;
         }
 
@@ -391,23 +391,21 @@ namespace HumaneSociety
         internal static int GetCategoryId(string categoryName)
         {
             Category category = db.Categories.Where(c => c.Name == categoryName).FirstOrDefault();
-            Console.WriteLine(category.Name);
-            Console.WriteLine(category.CategoryId);
+            
             return category.CategoryId;
         }
         
         internal static Room GetRoom(int animalId)
         {
             Room room = db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
-            Console.WriteLine(room.RoomNumber);
-            Console.WriteLine(room.RoomId);
+            
             return room;
         }
         
         internal static int GetDietPlanId(string dietPlanName)
         {
             DietPlan dietPlan = db.DietPlans.FirstOrDefault(d => d.Name == dietPlanName);
-            Console.WriteLine(dietPlan.DietPlanId);
+            
             return dietPlan.DietPlanId;
         }
 
